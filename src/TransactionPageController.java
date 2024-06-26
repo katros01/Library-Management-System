@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import Model.Borrow;
 import Model.BorrowDAO;
@@ -23,11 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class TransactionPageController implements Initializable {
     
     @FXML
@@ -95,14 +86,14 @@ public class TransactionPageController implements Initializable {
     private void searchButton(ActionEvent event) {
         String email = emailTextField.getText().trim();
         if (!email.isEmpty()) {
-            // Clear existing data in tables
+           
             borrowsTable.getItems().clear();
             reservationsTable.getItems().clear();
 
-            // Get all users
+            
             List<User> users = userDAO.getAllUsers();
             System.out.println(users);
-            // Find user ID for the given email
+            
             Long userId = null;
             for (User user : users) {
                 if (user.getEmail().equalsIgnoreCase(email)) {
@@ -113,19 +104,19 @@ public class TransactionPageController implements Initializable {
 
             if (userId != null) {
                 try {
-                    // Retrieve borrows and reservations for the found user ID
+                    
                     List<Borrow> borrows = borrowDAO.getBorrowsByUserId(userId);
                     List<Reservation> reservations = reservationDAO.getReservationsByUserId(userId);
                     
-                    // Populate borrows table
+                   
                     borrowsTable.getItems().addAll(borrows);
                     
-                    // Populate reservations table
+                    
                     reservationsTable.getItems().addAll(reservations);
                 } catch (SQLException ex) {
                     Logger.getLogger(TransactionPageController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            } 
         }
     }
     

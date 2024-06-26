@@ -11,11 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class UpdateBookController implements Initializable {
 
     @FXML
@@ -31,9 +26,6 @@ public class UpdateBookController implements Initializable {
     @FXML
     private Button cancel;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

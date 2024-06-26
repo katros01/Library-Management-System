@@ -17,7 +17,6 @@ public class BorrowDAO {
     protected Connection getConnection(){
         Connection connection = null;
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }  catch (SQLException e) {
             e.printStackTrace();
@@ -25,7 +24,6 @@ public class BorrowDAO {
         return  connection;
     }
 
-    // Method to add a new borrow record
     public void addBorrow(Borrow borrow) throws SQLException {
         String sql = "INSERT INTO borrower (userId, bookId, borrowDate, returnDate, status) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -38,7 +36,7 @@ public class BorrowDAO {
         }
     }
 
-    // Method to retrieve a borrow record by ID
+   
     public Borrow getBorrow(int id) throws SQLException {
         String sql = "SELECT * FROM borrower WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -59,7 +57,7 @@ public class BorrowDAO {
         return null;
     }
 
-    // Method to update a borrow record
+    
     public void updateBorrow(Borrow borrow) throws SQLException {
         String sql = "UPDATE borrower SET userId = ?, bookId = ?, borrowDate = ?, returnDate = ?, status = ? WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -73,7 +71,7 @@ public class BorrowDAO {
         }
     }
 
-    // Method to delete a borrow record
+   
     public void deleteBorrow(int id) throws SQLException {
         String sql = "DELETE FROM borrower WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -82,7 +80,7 @@ public class BorrowDAO {
         }
     }
 
-    // Method to retrieve all borrow records
+    
     public List<Borrow> getAllBorrows() throws SQLException {
         List<Borrow> borrows = new ArrayList<>();
         String sql = "SELECT * FROM borrower";

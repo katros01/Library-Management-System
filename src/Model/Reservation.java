@@ -36,7 +36,7 @@ public class Reservation {
         this.status = status;
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

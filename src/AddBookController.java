@@ -11,11 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class AddBookController implements Initializable {
 
     @FXML
@@ -27,19 +22,15 @@ public class AddBookController implements Initializable {
     @FXML
     private TextField genreId;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
     private void addButon(ActionEvent event) {
         
         String name = nameId.getText();
-//        int quantity = Integer.valueOf(quantityId.getText());
         String quantity = quantityId.getText();
         String author = authorId.getText();
         String genre = genreId.getText();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import Model.Reservation;
 import Model.ReservationDAO;
@@ -25,11 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class ReservePageController implements Initializable {
 
     @FXML
@@ -54,13 +45,13 @@ public class ReservePageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        userList = userDAO.getAllUsers();
         for (User user : userList) {
-            emailId.getItems().add(user.getEmail()); // Populate ComboBox with emails
+            emailId.getItems().add(user.getEmail()); 
         }
 
-        // Fetch all books and populate ComboBox
+       
         bookList = bookDAO.getAllBooks();
         for (Book book : bookList) {
-            bookfId.getItems().add(book.getName()); // Populate ComboBox with book names
+            bookfId.getItems().add(book.getName());
         }
     }    
 
@@ -89,7 +80,7 @@ public class ReservePageController implements Initializable {
         Long bookId = getBookIdByName(selectedBookName);
 
         if (userId == null || bookId == null || pickDateValue == null || returnDateValue == null) {
-            // Handle case where any of the fields are not selected
+            
             return;
         }
 
@@ -105,10 +96,13 @@ public class ReservePageController implements Initializable {
         bookfId.setValue(null);
         pickDate.setValue(null);
         returnDate.setValue(null);
+        
+        closeStage();
     }
 
     @FXML
     private void cancelButton(ActionEvent event) {
+        closeStage();
     }
     
      private Long getUserIdByEmail(String email) {
@@ -127,6 +121,10 @@ public class ReservePageController implements Initializable {
             }
         }
         return null; 
+    }
+    private void closeStage() {
+        Stage stage = (Stage) emailId.getScene().getWindow();
+        stage.close();
     }
     
 }

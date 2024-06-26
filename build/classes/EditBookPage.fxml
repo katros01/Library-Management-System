@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterPageController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditBookPageController">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="430.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register" wrappingWidth="129.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Book" wrappingWidth="182.13671875">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -27,37 +27,58 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="nameId" prefHeight="37.0" prefWidth="368.0">
+            <TextField fx:id="nameId" prefHeight="36.0" prefWidth="360.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <HBox>
+      <HBox layoutX="10.0" layoutY="75.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="220.0" text="Email">
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="214.0" text="Quantity">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="emailId" prefHeight="39.0" prefWidth="367.0">
+            <TextField fx:id="quantityId" prefHeight="36.0" prefWidth="352.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="75.0" />
-      <HBox layoutX="10.0" layoutY="114.0" />
       <HBox layoutX="10.0" layoutY="114.0">
-         <VBox.margin>
-            <Insets left="50.0" />
-         </VBox.margin>
+         <children>
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="214.0" text="Author">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="authorId" prefHeight="36.0" prefWidth="355.0">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="114.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="214.0" text="Genre">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="genreId" prefHeight="36.0" prefWidth="355.0">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#registerButton" prefHeight="41.0" prefWidth="121.0" text="Register">
+            <Button mnemonicParsing="false" onAction="#editButon" prefHeight="41.0" prefWidth="121.0" text="Edit">
                <HBox.margin>
                   <Insets right="13.0" />
                </HBox.margin>

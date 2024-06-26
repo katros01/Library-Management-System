@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import Model.Borrow;
 import Model.BorrowDAO;
@@ -29,11 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class BorrowPageController implements Initializable {
 
     @FXML
@@ -41,7 +32,7 @@ public class BorrowPageController implements Initializable {
     private List<User> userList;
     @FXML
     private ComboBox<String> bookfId;
-    private List<Book> bookList; // List to hold books fetched from DAO
+    private List<Book> bookList; 
 
     private final BookDAO bookDAO = new BookDAO();
     @FXML
@@ -95,32 +86,45 @@ public class BorrowPageController implements Initializable {
 
         } else {
             
-        try {
-            
+         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date returnDateValue = null;
-            try {
-                returnDateValue = dateFormat.parse(returnDateString);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            
+            Date returnDateValue = dateFormat.parse(returnDateString);
+
             Borrow borrow = new Borrow(userId, bookId, returnDateValue, "Borrowed");
+           
+            Book borrowedBook = getBookById(bookId); // Fetch book by ID
+            if (borrowedBook != null && borrowedBook.getQuantity() > 0) {
+                borrowedBook.setQuantity(borrowedBook.getQuantity() - 1); // Reduce quantity by 1
+                bookDAO.updateBook(borrowedBook); // Update book quantity in database
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("No more copies available for borrowing.");
+                alert.showAndWait();
+                return;
+            }
+
+          
             BorrowDAO borrowDAO = new BorrowDAO(); 
             borrowDAO.addBorrow(borrow);
-            
+           
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText("Borrow entry added successfully.");
             alert.showAndWait();
             
-            
             emailId.setValue(null);
             bookfId.setValue(null);
             returnDate.setValue(null);
+            closeStage();
             
-        } catch (SQLException ex) {
-                Logger.getLogger(BorrowPageController.class.getName()).log(Level.SEVERE, null, ex); 
+        } catch (ParseException | SQLException ex) {
+            Logger.getLogger(BorrowPageController.class.getName()).log(Level.SEVERE, null, ex);
+            
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Failed to add borrow entry.");
+            alert.showAndWait();
         }
 
         }
@@ -132,7 +136,7 @@ public class BorrowPageController implements Initializable {
                 return user.getId();
             }
         }
-        return null; // Handle case where email is not found
+        return null;
     }
     
     private Long getBookIdByName(String name) {
@@ -141,11 +145,25 @@ public class BorrowPageController implements Initializable {
                 return book.getId();
             }
         }
-        return null; // Handle case where book name is not found
+        return null; 
     }
+    
+    private Book getBookById(Long id) {
+    for (Book book : bookList) {
+        if (book.getId().equals(id)) {
+            return book;
+        }
+    }
+    return null; 
+}
 
     @FXML
     private void cancelButton(ActionEvent event) {
+        closeStage();
+    }
+    private void closeStage() {
+        Stage stage = (Stage) emailId.getScene().getWindow();
+        stage.close();
     }
     
 }

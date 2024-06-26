@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/BooksPage.fxml</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/AddBookController.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/Model/UserDAO.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/Main.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/LibrarianPageController.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/Model/User.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/Model/Book.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/BooksPageController.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/BookDAO.java</file>
-            <file>file:/C:/Users/Amalitech/Documents/NetBeansProjects/LMS_Project/src/AddBook.fxml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

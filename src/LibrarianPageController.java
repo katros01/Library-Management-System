@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,11 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
+
 public class LibrarianPageController implements Initializable {
     @FXML
     private BorderPane frame1;
@@ -50,9 +43,7 @@ public class LibrarianPageController implements Initializable {
     
     Main scene = new Main();
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTable();
@@ -72,7 +63,7 @@ public class LibrarianPageController implements Initializable {
     }
 
     public void allBooks() {
-//        frame1.setCenter(frame);
+
         loadPage("/BooksPage.fxml");
     }
     

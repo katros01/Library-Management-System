@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import Model.Reservation;
 import Model.ReservationDAO;
@@ -15,11 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class ReservationsPageController implements Initializable {
 
     @FXML
@@ -61,7 +52,6 @@ public class ReservationsPageController implements Initializable {
         reservationCol.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Load reservations data into the table
         loadReservations();
     }
      private void loadReservations() {

@@ -14,15 +14,16 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <TableView fx:id="listBooks" layoutX="55.0" layoutY="179.0" prefHeight="200.0" prefWidth="431.0">
+      <TableView fx:id="listBooks" layoutX="55.0" layoutY="179.0" prefHeight="200.0" prefWidth="548.0">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="52.0" text="Id" />
             <TableColumn fx:id="nameCol" prefWidth="112.0" text="Name" />
             <TableColumn fx:id="quantityCol" prefWidth="90.0" text="Quantity" />
             <TableColumn fx:id="authorCol" prefWidth="82.0" text="Author" />
             <TableColumn fx:id="genreCol" prefWidth="94.0" text="Genre" />
+            <TableColumn fx:id="actionCol" prefWidth="117.0" text="Actions" />
          </columns>
       </TableView>
-      <Button layoutX="391.0" layoutY="113.0" mnemonicParsing="false" onAction="#getAddBook" prefHeight="30.0" prefWidth="95.0" text="Add Book" />
+      <Button layoutX="508.0" layoutY="117.0" mnemonicParsing="false" onAction="#getAddBook" prefHeight="30.0" prefWidth="95.0" text="Add Book" />
    </children>
 </AnchorPane>

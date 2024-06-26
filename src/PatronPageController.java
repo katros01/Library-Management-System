@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,11 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
+
 public class PatronPageController implements Initializable {
     
     
@@ -48,9 +40,7 @@ public class PatronPageController implements Initializable {
     @FXML
     private TableColumn<Book, String> genreCol;
 
-    /**
-     * Initializes the controller class.
-     */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTable();
@@ -76,7 +66,7 @@ public class PatronPageController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(LandingFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        // TODO
+     
     }
 
     @FXML
@@ -104,7 +94,7 @@ public class PatronPageController implements Initializable {
     @FXML
     private void getReserveBook(ActionEvent event) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("TransactionPage.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("ReservePage.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage.setScene(scene);

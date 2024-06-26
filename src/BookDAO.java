@@ -6,7 +6,6 @@ public class BookDAO {
     protected Connection connectToDatabase(){
         Connection connection = null;
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "");
         }  catch (SQLException e) {
             e.printStackTrace();

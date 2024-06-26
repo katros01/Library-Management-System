@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
 import Model.Borrow;
 import Model.BorrowDAO;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,17 +9,23 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
-/**
- * FXML Controller class
- *
- * @author Amalitech
- */
 public class BorrowersPageController implements Initializable {
 
     @FXML
@@ -43,6 +46,8 @@ public class BorrowersPageController implements Initializable {
     private final BorrowDAO borrowDAO = new BorrowDAO();
     private final UserDAO userDAO = new UserDAO();
     private final BookDAO bookDAO = new BookDAO();
+    @FXML
+    private TableColumn<Borrow, Void> actionCol;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,16 +66,56 @@ public class BorrowersPageController implements Initializable {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         returnDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        actionCol.setCellFactory(new Callback<TableColumn<Borrow, Void>, TableCell<Borrow, Void>>() {
+            @Override
+            public TableCell<Borrow, Void> call(TableColumn<Borrow, Void> param) {
+                return new TableCell<Borrow, Void>() {
+                    private final Button btn = new Button("Update Status");
 
-        // Load borrow data into the table
-        loadBorrows();
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            Borrow borrow = getTableView().getItems().get(getIndex());
+                            openStatusUpdateDialog(borrow);
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+            }
+        });
+
+        getBorrows();
     }
     
-    private void loadBorrows() {
+    private void getBorrows() {
         try {
             List<Borrow> borrows = borrowDAO.getAllBorrows();
             borrowsTable.getItems().addAll(borrows);
         } catch (SQLException ex) {
+            Logger.getLogger(BorrowersPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void openStatusUpdateDialog(Borrow borrow) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateStatusPage.fxml"));
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setScene(new Scene(loader.load()));
+            UpdateStatusPageController controller = loader.getController();
+            controller.initData(borrow);
+            stage.showAndWait();
+            borrowsTable.getItems().clear();
+            getBorrows();
+        } catch (IOException ex) {
             Logger.getLogger(BorrowersPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

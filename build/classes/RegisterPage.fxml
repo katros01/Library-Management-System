@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -27,11 +27,11 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <ComboBox fx:id="nameId" prefHeight="35.0" prefWidth="360.0">
+            <TextField fx:id="nameId" prefHeight="37.0" prefWidth="368.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
-            </ComboBox>
+            </TextField>
          </children>
       </HBox>
       <HBox>
@@ -41,11 +41,11 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <ComboBox fx:id="emailId" prefHeight="35.0" prefWidth="360.0">
+            <TextField fx:id="emailId" prefHeight="39.0" prefWidth="367.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
-            </ComboBox>
+            </TextField>
          </children>
       </HBox>
       <HBox layoutX="10.0" layoutY="75.0" />
@@ -57,7 +57,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#RegisterButton" prefHeight="41.0" prefWidth="121.0" text="Register">
+            <Button mnemonicParsing="false" onAction="#registerButton" prefHeight="41.0" prefWidth="121.0" text="Register">
                <HBox.margin>
                   <Insets right="13.0" />
                </HBox.margin>
